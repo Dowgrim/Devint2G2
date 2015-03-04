@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Proto extends JFrame {
 
     private int position = 0;
+    
 
     private ArrayList<Integer> obstacle;
 
