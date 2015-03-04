@@ -5,10 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-
-/**
- * Created by Michael on 03/03/2015.
- */
 public class Proto extends JFrame {
 
     private int position = 0;
