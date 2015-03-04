@@ -176,13 +176,11 @@ public class test extends JPanel {
         f.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_UP) {
+                if (e.getKeyCode() == KeyEvent.VK_UP && ((test) f.getContentPane()).posY == 400) {
                     ((test) f.getContentPane()).up = true;
-                    System.out.println("lol");
                 }
                 if(e.getKeyCode() == KeyEvent.VK_DOWN){
                     ((test)f.getContentPane()).down = true;
-                    System.out.println("lol");
                 }
 
             }
