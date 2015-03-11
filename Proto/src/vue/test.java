@@ -15,7 +15,7 @@ import java.util.HashMap;
  */
 public class test extends JPanel {
 
-    public VuePerso perso = new VuePerso();
+    public ViewPlayer perso = new ViewPlayer();
 
     public int image = 0;
 
