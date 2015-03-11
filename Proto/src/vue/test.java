@@ -1,3 +1,5 @@
+package vue;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -13,13 +15,7 @@ import java.util.HashMap;
  */
 public class test extends JPanel {
 
-    public int posY = 400;
-
-    public boolean up = false;
-
-    public int raccour = 0;
-
-    public boolean down = false;
+    public VuePerso perso = new VuePerso();
 
     public int image = 0;
 
@@ -31,11 +27,10 @@ public class test extends JPanel {
 
     public HashMap<Integer, Integer> obstaclePos = new HashMap<Integer, Integer>();
 
-    public ArrayList<Image> trolFace = new ArrayList<Image>();
-
-    public int trol;
 
     public test(){
+
+        this.setLayout(null);
 
         File f = new File("./images/1.jpg");
         Image i = null;
@@ -62,7 +57,7 @@ public class test extends JPanel {
         }
         IMAGES.add(i);
 
-        for(int j = 1; j <= 10; j++) {
+        /*for(int j = 1; j <= 10; j++) {
             f = new File("./images/frame-" + j + ".gif");
             try {
                 i = ImageIO.read(f);
@@ -70,7 +65,9 @@ public class test extends JPanel {
                 e.printStackTrace();
             }
             trolFace.add(i);
-        }
+        }*/
+
+
 
         obstacle.add(10);
         obstacle.add(40);
@@ -85,14 +82,14 @@ public class test extends JPanel {
     }
 
     public void paint(Graphics g){
-        g.drawImage(IMAGES.get(image==0?2:image-1), pos-1280, 0, 1280, 800, null);
-        g.drawImage(IMAGES.get(image), pos, 0, 1280, 800, null);
-        int posob = (image * 1280 + pos) / 50;
+        g.drawImage(IMAGES.get(image==0?2:image-1), pos-1200, 0, 1200, 750, null);
+        g.drawImage(IMAGES.get(image), pos, 0, 1200, 750, null);
+        int posob = (image * 1200 + pos) / 50;
         for(int p : obstaclePos.keySet()){
-            g.fillRect(obstaclePos.get(p), 600, 30, 200);
+            g.fillRect(obstaclePos.get(p), 550, 30, 200);
         }
-        g.drawImage(trolFace.get(trol/15), 200, posY+raccour, 200, 400-raccour, null);
-        trol = trol==145?0:trol+1;
+        g.drawImage(perso.trolFace.get(perso.trol/17), 200, perso.posY+perso.raccour, 100, 200-perso.raccour, null);
+        perso.trol = perso.trol==150?0:perso.trol+1;
     }
 
     public class Defilement extends Thread{
@@ -106,7 +103,7 @@ public class test extends JPanel {
                 if(pos >= 0) {
                     pos--;
                 }else{
-                    pos = 1280;
+                    pos = 1200;
                     if(image < 2){
                         image++;
                     }
@@ -116,9 +113,9 @@ public class test extends JPanel {
                 }
 
 
-                int posob = (image * 1280 + pos) / 50;
+                int posob = (image * 1200 + pos) / 50;
                 if(obstacle.contains(posob) && !obstaclePos.containsKey(posob)){
-                       obstaclePos.put(posob, 1280);
+                       obstaclePos.put(posob, 1200);
                 }
 
                 int sup = 0;
@@ -134,27 +131,27 @@ public class test extends JPanel {
                     obstaclePos.remove(sup);
                 }
 
-                if(posY < 0){
-                    up = false;
+                if(perso.posY < 200){
+                    perso.up = false;
                 }
-                if(up){
-                    posY -= 3;
+                if(perso.up){
+                    perso.posY -= 3;
                 }
                 else {
-                    if(posY < 400)
-                        posY += 3;
+                    if(perso.posY < 550)
+                        perso.posY += 3;
                 }
 
 
-                if(raccour > 200){
-                    down = false;
+                if(perso.raccour > 100){
+                    perso.down = false;
                 }
-                if(down) {
-                    raccour += 3;
+                if(perso.down) {
+                    perso.raccour += 3;
                 }
                 else {
-                    if(raccour > 0)
-                        raccour -= 3;
+                    if(perso.raccour > 0)
+                        perso.raccour -= 3;
                 }
 
 
@@ -170,17 +167,17 @@ public class test extends JPanel {
 
     public static void main(String[] args) {
         final JFrame f = new JFrame("Projet Devint");
-        f.setSize(1280, 800);
+        f.setSize(1200, 750);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setContentPane(new test());
         f.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_UP && ((test) f.getContentPane()).posY == 400) {
-                    ((test) f.getContentPane()).up = true;
+                if (e.getKeyCode() == KeyEvent.VK_UP && ((test) f.getContentPane()).perso.posY == 550) {
+                    ((test) f.getContentPane()).perso.up = true;
                 }
                 if(e.getKeyCode() == KeyEvent.VK_DOWN){
-                    ((test)f.getContentPane()).down = true;
+                    ((test)f.getContentPane()).perso.down = true;
                 }
 
             }
