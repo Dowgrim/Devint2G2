@@ -18,4 +18,8 @@ public class ViewObstacle extends JPanel {
     public ViewObstacle(){
 
     }
+
+    public void paintComponent(Graphics g){
+
+    }
 }
