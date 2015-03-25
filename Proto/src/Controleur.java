@@ -6,8 +6,7 @@ import vue.*;
  */
 public class Controleur {
 
-
-    Modele modele;
+    Level modele;
 
 
 

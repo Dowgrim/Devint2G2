@@ -6,11 +6,18 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Michael on 06/03/2015.
  */
 public class ViewPlayer extends JPanel{
+
+    private HashMap<String, ArrayList<Image>> images;
+
+    private String action;
+
+    private int image;
 
     public int posY = 550;
 
