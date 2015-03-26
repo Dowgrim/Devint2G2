@@ -2,10 +2,12 @@ package modele;
 
 import org.json.JSONObject;
 
+import java.util.Observable;
+
 /**
  * Created by Michael on 11/03/2015.
  */
-public class Player {
+public class Player extends Observable{
     private int life;
     private int MAXLIFE;
     private int score;

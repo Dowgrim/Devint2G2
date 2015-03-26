@@ -1,10 +1,13 @@
 package modele;
 
 import org.json.*;
+
+import java.util.Observable;
+
 /**
  * Created by Michael on 06/03/2015.
  */
-public class Obstacle {
+public class Obstacle extends Observable{
     
     //x coordinate of the obstacle
     public int posX;

@@ -1,5 +1,6 @@
 package modele;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -7,4 +8,5 @@ import java.util.Observable;
  */
 public class Level extends Observable {
     private int position;
+    ArrayList<Obstacle> obstacles;
 }
