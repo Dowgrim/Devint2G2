@@ -13,27 +13,22 @@ import java.util.HashMap;
  */
 public class ViewPlayer extends JPanel{
 
-    private HashMap<String, ArrayList<Image>> images;
-
     private String action;
 
-    private int image;
+    private int image = 0;
 
-    public int posY = 550;
+    private HashMap<String, ArrayList<Image>> images;
 
-    public boolean up = false;
+    private int decalageX = 0;
 
-    public int raccour = 0;
+    private int decalageY = 0;
 
-    public boolean down = false;
-
-    public ArrayList<Image> trolFace = new ArrayList<Image>();
-
-    public int trol;
+    private int keyPressed;
 
     public ViewPlayer(){
         File f;
         Image i = null;
+        ArrayList<Image> tempIm = new ArrayList<Image>();
         for(int j = 1; j <= 10; j++) {
             f = new File("./images/frame-" + j + ".gif");
             try {
@@ -41,35 +36,56 @@ public class ViewPlayer extends JPanel{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            trolFace.add(i);
+            tempIm.add(i);
         }
+        images.put("Courir", tempIm);
+        images.put("Sauter", tempIm);
+        images.put("Glisser", tempIm);
+        action = "Courir";
     }
 
-    public void rotate(){
-        while(true){
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    public void paintComponent(Graphics2D g){
+        int h  = getParent().getHeight();
+        int w = getParent().getWidth();
+        g.drawImage(images.get(action).get(image), (w/6), h*3/4, 50, h/4, null);
+    }
+
+    public void Avancer(){
+        image++;
+        switch(action){
+            case "Glisser" :{
+                decalageY++;
+                break;
             }
-            repaint();
+            case "Sauter" :{
+                if(decalageY<getParent().getHeight()/4) {
+                    decalageY += 3;
+                }
+                else{
+                    action = "Courir";
+                }
+                break;
+            }
+            case "Courir" :{
 
+                break;
+            }
         }
     }
 
-    /*public void paintComponent(Graphics2D g){
-        g.drawImage(trolFace.get(trol/28), 200, posY+raccour, 100, 200-raccour, null);
-        g.rotate(0.2);
-    }*/
-
-    public static void main(String[] args) {
-        ViewPlayer vp = new ViewPlayer();
-        vp.repaint();
-        JFrame f = new JFrame();
-        f.setContentPane(vp);
-        f.setSize(400, 400);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setVisible(true);
+    public String getAction() {
+        return action;
     }
 
+    public int getImage() {
+        return image;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
 }

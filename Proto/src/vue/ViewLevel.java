@@ -13,24 +13,38 @@ import java.util.Observer;
  */
 public class ViewLevel extends JFrame implements Observer {
 
+    private ViewPlayer player;
+
+    private ArrayList<ViewObstacle> obstacles;
+
+    private ArrayList<Item> items;
+
+    private BackGroundL backGround;
+
     public ViewLevel(){
         setSize(1200, 750);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(new test());
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
-                    //getContentPane().perso.up = true;
-                    //TODO
+                    player.setAction("Sauter");
                 }
                 if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    //((test)f.getContentPane()).perso.down = true;
-                    //TODO
+                    player.setAction("Glisser");
                 }
 
             }
         });
+        backGround = new BackGroundL();
+        setContentPane(backGround);
+
+        player = new ViewPlayer();
+
+        obstacles = new ArrayList<ViewObstacle>();
+
         setVisible(true);
 
     }

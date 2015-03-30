@@ -30,51 +30,6 @@ public class test extends JPanel {
 
     public test(){
 
-        this.setLayout(null);
-
-        File f = new File("./images/1.jpg");
-        Image i = null;
-        try {
-            i = ImageIO.read(f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        IMAGES.add(i);
-
-        f = new File("./images/2.jpg");
-        try {
-            i = ImageIO.read(f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        IMAGES.add(i);
-
-        f = new File("./images/3.jpg");
-        try {
-            i = ImageIO.read(f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        IMAGES.add(i);
-
-        /*for(int j = 1; j <= 10; j++) {
-            f = new File("./images/frame-" + j + ".gif");
-            try {
-                i = ImageIO.read(f);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            trolFace.add(i);
-        }*/
-
-
-
-        obstacle.add(10);
-        obstacle.add(40);
-        obstacle.add(50);
-        obstacle.add(80);
-
-
         setVisible(true);
 
         Defilement t = new Defilement();
@@ -82,13 +37,13 @@ public class test extends JPanel {
     }
 
     public void paint(Graphics g){
-        g.drawImage(IMAGES.get(image==0?2:image-1), pos-1200, 0, 1200, 750, null);
-        g.drawImage(IMAGES.get(image), pos, 0, 1200, 750, null);
-        int posob = (image * 1200 + pos) / 50;
+        g.drawImage(IMAGES.get(0), pos-3500, 0, 3500, 750, null);
+        g.drawImage(IMAGES.get(0), pos, 0, 3500, 750, null);
+        int posob = (image * 3500 + pos) / 50;
         for(int p : obstaclePos.keySet()){
             g.fillRect(obstaclePos.get(p), 550, 30, 200);
         }
-        g.drawImage(perso.trolFace.get(perso.trol/17), 200, perso.posY+perso.raccour, 100, 200-perso.raccour, null);
+        g.drawImage(perso.trolFace.get(perso.trol/17), 300, perso.posY+perso.raccour, 100, 200-perso.raccour, null);
         perso.trol = perso.trol==150?0:perso.trol+1;
     }
 
@@ -103,7 +58,7 @@ public class test extends JPanel {
                 if(pos >= 0) {
                     pos--;
                 }else{
-                    pos = 1200;
+                    pos = 3500;
                     if(image < 2){
                         image++;
                     }
@@ -113,9 +68,9 @@ public class test extends JPanel {
                 }
 
 
-                int posob = (image * 1200 + pos) / 50;
+                int posob = (image * 3500 + pos) / 50;
                 if(obstacle.contains(posob) && !obstaclePos.containsKey(posob)){
-                       obstaclePos.put(posob, 1200);
+                       obstaclePos.put(posob, 3500);
                 }
 
                 int sup = 0;
