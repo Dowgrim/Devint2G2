@@ -2,9 +2,14 @@ package game;
 
 import action.Glisser;
 import action.Sauter;
+
 import com.sun.xml.internal.stream.util.ThreadLocalBufferAllocator;
 
 import javax.swing.*;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -108,5 +113,27 @@ public class Level extends JFrame{
                 }
             }
         }
+    }
+    
+    /**
+     * ToJson method for a level
+     * It will return a JSon containing
+     * all the obstacle and their coordinates, the difficulty,
+     * the background, the position in the level, and the player
+     * @return a JSONOBject which represent this instance of level
+     */
+    public JSONObject toJson(){
+        JSONObject levelJson = new JSONObject();
+        levelJson.put("difficulty", difficulty.toJson());
+        levelJson.put("background",backGround.toJson());
+        levelJson.put("position", position);
+        JSONArray obstacle = new JSONArray();
+        for(Obstacle o : obstacles){
+            obstacle.put(o.toJson());
+        }
+        levelJson.put("obstacles",obstacle);
+        levelJson.put("player",player.toJson());
+        
+        return levelJson;
     }
 }

@@ -2,7 +2,8 @@ package action;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
+
+import org.json.JSONObject;
 
 /**
  * Created by Michael on 31/03/2015.
@@ -56,5 +57,19 @@ public class Action {
 
     public void forward() {
         image++;
+    }
+    
+    /**
+     * an action in a toJson
+     * @return a JSONObject representing the instance of Action
+     */
+    public JSONObject toJson(){
+        JSONObject actionJson = new JSONObject();
+        actionJson.put("image",image);
+        actionJson.put("shiftX",shiftX);
+        actionJson.put("shiftY",shiftY);
+        actionJson.put("shiftWidth",shiftWidth);
+        actionJson.put("shiftHeight",shiftHeigt);
+        return actionJson;
     }
 }

@@ -1,5 +1,7 @@
 package game;
 
+import org.json.JSONObject;
+
 /**
  * Created by Michael on 31/03/2015.
  */
@@ -29,5 +31,17 @@ public enum Difficulty {
 
     public double getSpeed() {
         return speed;
+    }
+    
+    /**
+     * toJson method for the difficulty
+     * @return a JSONObject which represent the current instance of Difficulty
+     */
+    public JSONObject toJson(){
+        JSONObject difficultyJson = new JSONObject();
+        difficultyJson.put("pause", pause);
+        difficultyJson.put("time", time);
+        difficultyJson.put("speed", speed);
+        return difficultyJson;
     }
 }

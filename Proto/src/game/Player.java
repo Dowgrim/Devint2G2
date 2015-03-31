@@ -4,11 +4,15 @@ import action.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import org.json.JSONObject;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import action.Action;
 
 /**
@@ -59,5 +63,21 @@ public class Player extends JPanel{
 
     public void gg() {
         carac.setScore(carac.getScore() + 500);
+    }
+    
+    /**
+     * toJson method for a Player
+     * it contains the associated PlayerCarac in json,
+     * the action and the keypressed in json;
+     * @return JSONObject which represent this instance of player
+     */
+    public JSONObject toJson(){
+        JSONObject playerJson = new JSONObject();
+        playerJson.put("carac", carac.toJson());
+        playerJson.put("action",action.toJson());
+        playerJson.put("keypressed",keyPressed);
+        
+        return playerJson;
+        
     }
 }

@@ -2,6 +2,9 @@ package game;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import org.json.JSONObject;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -21,11 +24,13 @@ public class Obstacle extends JPanel {
     private String sound;
 
     private String state;
+    
+    private String pathImage;
 
     public Obstacle(String image, ObstacleCarac carac, int key, String sound){
         state = "Normal";
-
-        File f = new File(image);
+        this.pathImage = image;
+        File f = new File(pathImage);
         try {
             images.put(state, ImageIO.read(f));
         } catch (IOException e) {
@@ -70,5 +75,22 @@ public class Obstacle extends JPanel {
 
     public int getheight(){
         return carac.getHeight();
+    }
+    
+    /**
+     * toJson method for an Obstacle
+     * it contains the JSon of the associated ObstacleCarac
+     * and the path of the image, the key we have to push,
+     * the path of the sound, and the state
+     * @return a JSONObject which represent the current instance of Obstacle
+     */
+    public JSONObject toJson(){
+        JSONObject obstacleJson = new JSONObject();
+        obstacleJson.put("carac", this.carac.toJson());
+        obstacleJson.put("image", pathImage);
+        obstacleJson.put("key",key);
+        obstacleJson.put("state",state);
+        obstacleJson.put("sound",sound);
+        return obstacleJson;
     }
 }
