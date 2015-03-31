@@ -6,6 +6,7 @@ import game.Obstacle;
 import game.ObstacleCarac;
 import org.json.JSONObject;
 import org.junit.Test;
+import game.ObstacleCarac;
 
 public class testObstacle {
 

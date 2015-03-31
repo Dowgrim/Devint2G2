@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import game.Player;
 import game.PlayerCarac;
 import org.junit.Test;
+import game.PlayerCarac;
 
 public class testPlayer {
 
