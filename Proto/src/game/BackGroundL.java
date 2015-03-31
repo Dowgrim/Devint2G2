@@ -11,7 +11,7 @@ import java.util.Observer;
 /**
  * Created by Michael on 25/03/2015.
  */
-public class BackGroundL extends JPanel implements Observer{
+public class BackGroundL extends JPanel{
 
     private Image background;
 
@@ -20,7 +20,7 @@ public class BackGroundL extends JPanel implements Observer{
     public BackGroundL(){
         this.setLayout(null);
 
-        File f = new File("./images/5.jpg");
+        File f = new File("./Proto/images/5.jpg");
         try {
             background = ImageIO.read(f);
         } catch (IOException e) {
@@ -33,8 +33,8 @@ public class BackGroundL extends JPanel implements Observer{
         g.drawImage(background, position, 0, 3500, 750, null);
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-
+    public void forward(int pos){
+        position = (pos++) % 3500;
+        repaint();
     }
 }

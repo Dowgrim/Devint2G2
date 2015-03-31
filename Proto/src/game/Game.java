@@ -1,5 +1,9 @@
 package game;
 
+import action.Courir;
+import action.Glisser;
+import action.Sauter;
+
 import java.util.ArrayList;
 
 /**
@@ -9,12 +13,14 @@ public class Game {
 
     private static String DATA = "chemon vers les données";
 
-    private int Difficulty = 1;
-    private Level levels;
+    private Difficulty difficulty = Difficulty.VeryEasy;
+    private Level level;
 
 
     public Game(){
-
+        Courir.initIMAGES("TODO");
+        Glisser.initIMAGES("TODO");
+        Sauter.initIMAGES("TODO");
     }
 
 
@@ -22,5 +28,9 @@ public class Game {
         //TODO
         //Aller regardez dans DATA le chemin vers le fichier de donnée du Level l.
         // lancer le niveau
+        ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
+        //obstacles.add(new Obstacle("./Proto/images/1.gif", new ObstacleCarac(1300, )));
+
+
     }
 }

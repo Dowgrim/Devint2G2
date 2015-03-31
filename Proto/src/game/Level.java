@@ -2,6 +2,7 @@ package game;
 
 import action.Glisser;
 import action.Sauter;
+import com.sun.xml.internal.stream.util.ThreadLocalBufferAllocator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,9 +15,11 @@ import java.util.Observer;
 /**
  * Created by Michael on 06/03/2015.
  */
-public class Level extends JFrame implements Observer {
+public class Level extends JFrame{
 
     private Player player;
+
+    private Difficulty difficulty;
 
     private ArrayList<Obstacle> obstacles;
 
@@ -24,9 +27,11 @@ public class Level extends JFrame implements Observer {
 
     private BackGroundL backGround;
 
-    private int position;
+    private int position = 0;
 
-    public Level(ArrayList<Obstacle> obstacles){
+    public Level(ArrayList<Obstacle> obstacles, Difficulty dif){
+        final Defilement t = new Defilement();
+        difficulty = dif;
         setSize(1200, 750);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,12 +41,17 @@ public class Level extends JFrame implements Observer {
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_UP :{
                         player.setAction(new Sauter());
+                        player.setKeyPressed(e.getKeyCode());
+                        break;
                     }
                     case KeyEvent.VK_DOWN :{
                         player.setAction(new Glisser());
+                        player.setKeyPressed(e.getKeyCode());
+                        break;
                     }
                     case KeyEvent.VK_ENTER :{
-                        go();
+                        t.start();
+                        break;
                     }
                 }
             }
@@ -57,21 +67,46 @@ public class Level extends JFrame implements Observer {
             backGround.add(o);
         }
 
-
         setVisible(true);
     }
 
-    private void go() {
+    public class Defilement extends Thread {
 
-    }
-
-    @Override
-    public void paint(Graphics g){
-        super.paint(g);
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-
+        @Override
+        public void run() {
+            while (player.getScore() < 5000) {
+                position++;
+                player.forward();
+                backGround.forward(position);
+                for(Obstacle o : obstacles) {
+                    if(o.getX() < position + 2000 && o.getX() > position) {
+                        o.setBounds(o.getX() - position, o.getY(), o.getWidth(), o.getheight());
+                    }
+                    if(o.getX() == position && o.getKey() != player.getKeyPressed()){
+                        if(difficulty.isPause()){
+                            while(o.getKey() != player.getKeyPressed()){
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        else{
+                            player.hit();}
+                        }
+                    else{
+                        if(o.getKey() == player.getKeyPressed()){
+                            player.gg();
+                        }
+                    }
+                }
+                try {
+                    Thread.sleep(3);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

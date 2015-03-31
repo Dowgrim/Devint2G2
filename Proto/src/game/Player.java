@@ -29,15 +29,35 @@ public class Player extends JPanel{
     public void paintComponent(Graphics2D g){
         int h  = getParent().getHeight();
         int w = getParent().getWidth();
-        g.drawImage(action.getImage(), 0, 0, 50, 150, null);
+        g.drawImage(action.getImage(), 0, 0, getWidth(), getHeight(), null);
     }
 
-    public void Avancer(){
+    public void forward(){
         action.forward();
+        this.setBounds(200 + action.getShiftX(), 500 + action.getShiftY(), 50 + action.getShiftWidth(), 150 + action.getShiftHeigt());
     }
 
     public void setAction(Action action) {
         this.action = action;
     }
 
+    public int getScore(){
+        return carac.getScore();
+    }
+
+    public void setKeyPressed(int keyPressed) {
+        this.keyPressed = keyPressed;
+    }
+
+    public int getKeyPressed() {
+        return keyPressed;
+    }
+
+    public void hit(){
+        carac.setLife(carac.getLife() - 1);
+    }
+
+    public void gg() {
+        carac.setScore(carac.getScore() + 500);
+    }
 }

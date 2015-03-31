@@ -9,17 +9,29 @@ import java.util.HashMap;
  */
 public class Action {
 
-    private int image;
+    protected static ArrayList<Image> IMAGES;
 
-    private int shiftX;
+    protected int image;
 
-    private int shiftY;
+    protected int shiftX;
 
-    private int shiftWidth;
+    protected int shiftY;
 
-    private int shiftHeigt;
+    protected int shiftWidth;
 
-    private ArrayList<Image> images;
+    protected int shiftHeigt;
+
+    public static void initIMAGES(String chemin){
+
+    }
+
+    public Action(){
+        image = 0;
+        shiftHeigt = 0;
+        shiftWidth = 0;
+        shiftX = 0;
+        shiftY = 0;
+    }
 
 
     public int getShiftX() {
@@ -39,9 +51,10 @@ public class Action {
     }
 
     public Image getImage() {
-        return images.get(image);
+        return IMAGES.get(image);
     }
 
     public void forward() {
+        image++;
     }
 }
