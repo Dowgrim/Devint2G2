@@ -80,7 +80,7 @@ public class Level extends JFrame{
             o.setBounds(-400, 0, o.getCaracWidth(), o.getCaracHeight());
         }
 
-        backGround = new BackGroundL();
+        backGround = new BackGroundL("./Proto/images/BackGround/5.jpg");
         contentPane.add(backGround);
         backGround.setBounds(0, 0, getWidth(), getHeight());
 

@@ -117,11 +117,10 @@ public abstract class ConfigObstactle {
         int position=0;
         try{
             path=back.getString("path");
-            position=back.getInt("position");
         }catch (Exception e){
             
         }
-        return new BackGroundL(path,position);
+        return new BackGroundL(path);
     }
     
     public static Level levelConfig(JSONObject level){

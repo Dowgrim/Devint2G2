@@ -43,7 +43,7 @@ public class testLayout extends JPanel{
 
         contentPane.add(tP);
 
-        final BackGroundL layoutpane = new BackGroundL();
+        final BackGroundL layoutpane = new BackGroundL("./Proto/images/BackGround/5.jpg");
         contentPane.add(layoutpane);
 
         layoutpane.setBounds(0,0,f.getWidth(), f.getHeight());

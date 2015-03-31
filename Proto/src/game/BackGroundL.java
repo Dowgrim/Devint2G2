@@ -17,20 +17,17 @@ import java.util.Observer;
 public class BackGroundL extends JPanel{
 
     private Image background;
-    private String path;
 
-    public BackGroundL(){
+    public BackGroundL(String backGround){
 
-        this.path="./Proto/images/BackGround/5.jpg";
-
-        File f = new File(path);
+        File f = new File(backGround);
         try {
             background = ImageIO.read(f);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     @Override
     public void paintComponent(Graphics g){
         g.drawImage(background, 0, 0, 3500, 750, null);
