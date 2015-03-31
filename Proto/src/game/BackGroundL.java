@@ -30,13 +30,11 @@ public class BackGroundL extends JPanel{
             e.printStackTrace();
         }
     }
-
-
+    
     @Override
     public void paintComponent(Graphics g){
         g.drawImage(background, 0, 0, 3500, 750, null);
         g.drawImage(background, 3500, 0, 3500, 750, null);
-
     }
 
     public void forward(int pos){
