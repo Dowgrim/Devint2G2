@@ -133,7 +133,6 @@ public class Level extends JFrame{
         }
         levelJson.put("obstacles",obstacle);
         levelJson.put("player",player.toJson());
-        
         return levelJson;
     }
 }

@@ -82,7 +82,7 @@ public class Obstacle extends JPanel {
      * it contains the JSon of the associated ObstacleCarac
      * and the path of the image, the key we have to push,
      * the path of the sound, and the state
-     * @return a JSONObject which represent the current instance of Obstacle
+     * @return a JSONObject which represent the current instance of Obstl
      */
     public JSONObject toJson(){
         JSONObject obstacleJson = new JSONObject();
