@@ -10,8 +10,6 @@ import org.json.JSONObject;
  */
 public class Action {
 
-    protected static ArrayList<Image> IMAGES;
-
     protected int image;
 
     protected int shiftX;
@@ -22,11 +20,12 @@ public class Action {
 
     protected int shiftHeigt;
 
-    protected int interval = 0;
+    protected int interval;
 
     protected boolean endAction = false;
 
     public Action(){
+        interval = 0;
         image = 0;
         shiftHeigt = 0;
         shiftWidth = 0;
@@ -51,16 +50,14 @@ public class Action {
     }
 
     public Image getImage() {
-        return IMAGES.get(image);
+        return null;
     }
 
     public boolean isEndAction() {
         return endAction;
     }
 
-    public void forward() {
-        interval++;
-    }
+    public void forward() { }
     
     /**
      * an action in a toJson

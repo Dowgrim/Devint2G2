@@ -17,15 +17,19 @@ public class Sauter extends Action {
 
     @Override
     public void forward(){
-        super.forward();
-        if(interval == 10){
+        interval++;
+        if(interval == 30){
             image++;
+            if(image == 6){
+                image = 0;
+            }
             interval = 0;
         }
         if(shiftY > -200 && !descent){
             shiftY--;
         }
         else{
+            descent = true;
             if(shiftY < 0){
                 shiftY++;
             }
@@ -33,6 +37,11 @@ public class Sauter extends Action {
                 endAction = true;
             }
         }
+    }
+
+    @Override
+    public Image getImage() {
+        return IMAGES.get(image);
     }
 
     public static void initIMAGES(String chemin){

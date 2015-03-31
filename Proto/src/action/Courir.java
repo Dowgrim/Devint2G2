@@ -18,9 +18,12 @@ public class Courir extends Action {
 
     @Override
     public void forward(){
-        super.forward();
-        if(interval == 10){
+        interval++;
+        if(interval == 30){
             image++;
+         if(image == 6){
+             image = 0;
+         }
             interval = 0;
         }
 
@@ -48,5 +51,10 @@ public class Courir extends Action {
                 }
             }
         }
+    }
+
+    @Override
+    public Image getImage() {
+        return IMAGES.get(image);
     }
 }
