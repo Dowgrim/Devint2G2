@@ -2,6 +2,8 @@ package modele;
 
 import static org.junit.Assert.*;
 
+import game.Player;
+import game.PlayerCarac;
 import org.junit.Test;
 
 public class testPlayer {
@@ -9,7 +11,7 @@ public class testPlayer {
     @Test
     public void testConstructor() {
         int life = 8;
-        Player player = new Player(life);
+        PlayerCarac player = new PlayerCarac(life);
         assertEquals(player.getLife(),life);
         assertEquals(player.getMAXLIFE(),life);
         assertEquals(player.getMAXLIFE(),player.getLife());
@@ -20,8 +22,8 @@ public class testPlayer {
     @Test
     public void testEquals(){
         //new Player() equals new Player()
-        Player player = new Player();
-        Player player2 = new Player();
+        PlayerCarac player = new PlayerCarac();
+        PlayerCarac player2 = new PlayerCarac();
         assertEquals(player,player2);
         //player life = 1 != player2 life = 2
         player2.setLife(2);
@@ -36,7 +38,7 @@ public class testPlayer {
     @Test
     public void testBorder(){
         //life < 0
-        Player player = new Player(-9);
+        PlayerCarac player = new PlayerCarac(-9);
         assertTrue(player.getLife()>0);
         //life << 0
         player.setLife(-20000);
