@@ -61,16 +61,20 @@ public class Level extends JFrame{
                 }
             }
         });
-        backGround = new BackGroundL();
-        setContentPane(backGround);
+        JPanel contentPane = new JPanel();
+        setContentPane(contentPane);
 
         player = new Player();
-        backGround.add(player, 200, 400);
+        contentPane.add(player);
+        player.forward();
 
         this.obstacles = obstacles;
         for(Obstacle o : obstacles){
-            backGround.add(o);
+            contentPane.add(o);
         }
+
+        backGround = new BackGroundL();
+        contentPane.add(backGround);
 
         setVisible(true);
     }
@@ -82,15 +86,16 @@ public class Level extends JFrame{
             while (player.getScore() < 5000) {
                 position++;
                 player.forward();
-                backGround.forward(position);
                 for(Obstacle o : obstacles) {
                     if(o.getX() < position + 2000 && o.getX() > position) {
                         o.setBounds(o.getX() - position, o.getY(), o.getWidth(), o.getheight());
+                        o.repaint();
                     }
                     if(o.getX() == position && o.getKey() != player.getKeyPressed()){
                         if(difficulty.isPause()){
                             while(o.getKey() != player.getKeyPressed()){
                                 try {
+                                    System.out.println("lol");
                                     Thread.sleep(500);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
@@ -111,6 +116,7 @@ public class Level extends JFrame{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                backGround.forward(position);
             }
         }
     }

@@ -14,4 +14,8 @@ public class Glisser extends Action {
     public void forward(){
 
     }
+
+    public static void initIMAGES(String chemin){
+
+    }
 }

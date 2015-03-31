@@ -22,23 +22,24 @@ public class Player extends JPanel{
 
     private Action action;
 
-    public PlayerCarac carac;
+    public PlayerCarac carac = new PlayerCarac(0);
 
-    private int keyPressed;
+    private int keyPressed = -1;
 
     public Player(){
         action = new Courir();
     }
 
     public void paintComponent(Graphics2D g){
-        int h  = getParent().getHeight();
-        int w = getParent().getWidth();
         g.drawImage(action.getImage(), 0, 0, getWidth(), getHeight(), null);
     }
 
     public void forward(){
         action.forward();
-        this.setBounds(200 + action.getShiftX(), 500 + action.getShiftY(), 50 + action.getShiftWidth(), 150 + action.getShiftHeigt());
+        if(action.isEndAction()){
+            action = new Courir();
+        }
+        this.setBounds(200 + action.getShiftX(), 400 + action.getShiftY(), 50 + action.getShiftWidth(), 150 + action.getShiftHeigt());
     }
 
     public void setAction(Action action) {

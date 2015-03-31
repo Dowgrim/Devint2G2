@@ -22,9 +22,9 @@ public class Action {
 
     protected int shiftHeigt;
 
-    public static void initIMAGES(String chemin){
+    protected int interval = 0;
 
-    }
+    protected boolean endAction = false;
 
     public Action(){
         image = 0;
@@ -33,7 +33,6 @@ public class Action {
         shiftX = 0;
         shiftY = 0;
     }
-
 
     public int getShiftX() {
         return shiftX;
@@ -55,8 +54,12 @@ public class Action {
         return IMAGES.get(image);
     }
 
+    public boolean isEndAction() {
+        return endAction;
+    }
+
     public void forward() {
-        image++;
+        interval++;
     }
     
     /**

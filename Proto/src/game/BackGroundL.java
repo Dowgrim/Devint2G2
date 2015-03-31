@@ -22,8 +22,10 @@ public class BackGroundL extends JPanel{
 
     public BackGroundL(){
         this.setLayout(null);
-        this.path="./Proto/images/5.jpg";
-        File f = new File(this.path);
+
+        this.path="./Proto/images/BackGround/5.jpg";
+
+        File f = new File(path);
         try {
             background = ImageIO.read(f);
         } catch (IOException e) {
@@ -32,8 +34,8 @@ public class BackGroundL extends JPanel{
     }
 
     public void paint(Graphics g){
-        g.drawImage(background, position-3500, 0, 3500, 750, null);
-        g.drawImage(background, position, 0, 3500, 750, null);
+        g.drawImage(background, 3500-position, 0, 3500, 750, null);
+        g.drawImage(background, -position, 0, 3500, 750, null);
     }
 
     public void forward(int pos){

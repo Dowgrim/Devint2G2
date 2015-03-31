@@ -16,7 +16,7 @@ public class testPanel extends JPanel {
     public testPanel(){
         this.setLayout(null);
 
-        File f = new File("./Proto/images/5.jpg");
+        File f = new File("./Proto/images/Perso/5.gif");
         try {
             image = ImageIO.read(f);
         } catch (IOException e) {
