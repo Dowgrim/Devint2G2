@@ -41,7 +41,7 @@ public class Level extends JFrame{
         final Defilement t = new Defilement();
         difficulty = dif;
         setSize(1200, 750);
-        setResizable(false);
+        //setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addKeyListener(new KeyAdapter() {
             @Override
@@ -58,7 +58,9 @@ public class Level extends JFrame{
                         break;
                     }
                     case KeyEvent.VK_ENTER :{
-                        t.start();
+                        if(!t.isAlive()) {
+                            t.start();
+                        }
                         break;
                     }
                 }
@@ -66,6 +68,7 @@ public class Level extends JFrame{
         });
         JPanel contentPane = new JPanel();
         setContentPane(contentPane);
+        contentPane.setLayout(null);
 
         player = new Player();
         contentPane.add(player);
@@ -74,14 +77,15 @@ public class Level extends JFrame{
         this.obstacles = obstacles;
         for(Obstacle o : obstacles){
             contentPane.add(o);
+            o.setBounds(-400, 0, o.getCaracWidth(), o.getCaracHeight());
         }
 
         backGround = new BackGroundL();
         contentPane.add(backGround);
+        backGround.setBounds(0, 0, getWidth(), getHeight());
 
         setVisible(true);
     }
-
     public class Defilement extends Thread {
 
         @Override
@@ -90,27 +94,36 @@ public class Level extends JFrame{
                 position++;
                 player.forward();
                 for(Obstacle o : obstacles) {
-                    if(o.getX() < position + 2000 && o.getX() > position) {
-                        o.setBounds(o.getX() - position, o.getY(), o.getWidth(), o.getheight());
-                        o.repaint();
+                    if (o.getCaracX() < position + 2000 && o.getCaracX() > position - 1000) {
+                        o.setBounds((o.getCaracX() - position), o.getCaracY(), o.getCaracWidth(), o.getCaracHeight());
+                        if(o.getCaracX() == position+1000){
+                            o.playSound();
+                        }
                     }
-                    if(o.getX() == position && o.getKey() != player.getKeyPressed()){
-                        if(difficulty.isPause()){
-                            while(o.getKey() != player.getKeyPressed()){
+                    if (o.getCaracX() == (position+250) && o.getKey() != player.getKeyPressed()) {
+                        if (difficulty.isPause()) {
+                            while (o.getKey() != player.getKeyPressed()) {
+                                int i = 0;
+                                if(i==3){
+                                    o.playSound();
+                                }
                                 try {
-                                    System.out.println("lol");
-                                    Thread.sleep(500);
+                                    Thread.sleep(1000);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
+                                i++;
                             }
-                        }
-                        else{
-                            player.hit();}
-                        }
-                    else{
-                        if(o.getKey() == player.getKeyPressed()){
                             player.gg();
+                            player.setKeyPressed(-1);
+                        } else {
+                            player.hit();
+                        }
+                    }
+                    else{
+                        if(o.getKey() == player.getKeyPressed() && o.getCaracX() == (position+250)){
+                            player.gg();
+                            player.setKeyPressed(-1);
                         }
                     }
                 }
@@ -131,7 +144,7 @@ public class Level extends JFrame{
      * the background, the position in the level, and the player
      * @return a JSONOBject which represent this instance of level
      */
-    public JSONObject toJson(){
+    /*public JSONObject toJson(){
         JSONObject levelJson = new JSONObject();
         levelJson.put("difficulty", difficulty.toJson());
         levelJson.put("background",backGround.toJson());
@@ -143,5 +156,5 @@ public class Level extends JFrame{
         levelJson.put("obstacles",obstacle);
         levelJson.put("player",player.toJson());
         return levelJson;
-    }
+    }*/
 }

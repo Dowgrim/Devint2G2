@@ -1,5 +1,8 @@
 package test;
 
+import game.BackGroundL;
+import game.Player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -32,13 +35,19 @@ public class testLayout extends JPanel{
     public static void main(String[] args) {
         JFrame f = new JFrame("TEST");
         f.setSize(400, 400);
+
         JPanel contentPane = new JPanel();
-        final testPanel tP = new testPanel();
-        contentPane.add(tP);
-        testLayout layoutpane = new testLayout();
         f.setContentPane(contentPane);
+
+        final Player tP = new Player();
+
+        contentPane.add(tP);
+
+        final BackGroundL layoutpane = new BackGroundL();
         contentPane.add(layoutpane);
+
         layoutpane.setBounds(0,0,f.getWidth(), f.getHeight());
+
         contentPane.setLayout(null);
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,7 +73,22 @@ public class testLayout extends JPanel{
                         tP.setBounds(tP.getX()+1, tP.getY(), tP.getWidth(), tP.getHeight());
                         break;
                     }
-
+                    case KeyEvent.VK_Z :{
+                        layoutpane.setBounds(layoutpane.getX(), layoutpane.getY()-1, layoutpane.getWidth(), layoutpane.getHeight());
+                        break;
+                    }
+                    case KeyEvent.VK_S :{
+                        layoutpane.setBounds(layoutpane.getX(), layoutpane.getY()+1, layoutpane.getWidth(), layoutpane.getHeight());
+                        break;
+                    }
+                    case KeyEvent.VK_Q :{
+                        layoutpane.setBounds(layoutpane.getX()-1, layoutpane.getY(), layoutpane.getWidth(), layoutpane.getHeight());
+                        break;
+                    }
+                    case KeyEvent.VK_D :{
+                        layoutpane.setBounds(layoutpane.getX()+1, layoutpane.getY(), layoutpane.getWidth(), layoutpane.getHeight());
+                        break;
+                    }
                 }
             }
         });

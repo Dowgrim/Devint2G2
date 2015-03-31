@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import org.json.JSONObject;
+import t2s.SIVOXDevint;
 
 import java.awt.*;
 import java.io.File;
@@ -24,8 +25,9 @@ public class Obstacle extends JPanel {
     private String sound;
 
     private String state;
+
     
-    private String pathImage;
+    //private String pathImage;
 
     public Obstacle(String image, ObstacleCarac carac, int key, String sound){
         this(image,carac,key,sound,"Normal");
@@ -33,8 +35,8 @@ public class Obstacle extends JPanel {
 
     public Obstacle(String image, ObstacleCarac carac, int key, String sound, String state){
         this.state=state;
-        this.pathImage = image;
-        File f = new File(pathImage);
+        File f = new File(image);
+        state = "Normal";
         try {
             images.put(state, ImageIO.read(f));
         } catch (IOException e) {
@@ -43,6 +45,7 @@ public class Obstacle extends JPanel {
         this.carac = carac;
         this.key = key;
         this.sound = sound;
+        this.setSize(carac.getWidth(), carac.getHeight());
     }
     
     public void paintComponent(Graphics g){
@@ -65,22 +68,27 @@ public class Obstacle extends JPanel {
         return sound;
     }
 
-    public int getX(){
+    public int getCaracX(){
         return carac.getPosX();
     }
 
-    public int getY(){
+    public int getCaracY(){
         return carac.getPosY();
     }
 
-    public int getWidth(){
+    public int getCaracWidth(){
         return carac.getWidth();
     }
 
-    public int getheight(){
+    public int getCaracHeight(){
         return carac.getHeight();
     }
-    
+
+    public void playSound(){
+        SIVOXDevint s = new SIVOXDevint();
+        s.playWav(sound);
+    }
+
     /**
      * toJson method for an Obstacle
      * it contains the JSon of the associated ObstacleCarac
@@ -88,7 +96,7 @@ public class Obstacle extends JPanel {
      * the path of the sound, and the state
      * @return a JSONObject which represent the current instance of Obstl
      */
-    public JSONObject toJson(){
+    /*public JSONObject toJson(){
         JSONObject obstacleJson = new JSONObject();
         obstacleJson.put("carac", this.carac.toJson());
         obstacleJson.put("image", pathImage);
@@ -96,5 +104,5 @@ public class Obstacle extends JPanel {
         obstacleJson.put("state",state);
         obstacleJson.put("sound",sound);
         return obstacleJson;
-    }
+    }*/
 }

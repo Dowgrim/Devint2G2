@@ -28,6 +28,7 @@ public class Player extends JPanel{
 
     public Player(){
         action = new Courir();
+        setSize(50, 150);
     }
 
     public Player(Action act, PlayerCarac playCarac, int keyPressed){
@@ -35,8 +36,9 @@ public class Player extends JPanel{
         this.carac = playCarac;
         this.keyPressed = keyPressed;
     }
-    
-    public void paintComponent(Graphics2D g){
+
+    @Override
+    public void paintComponent(Graphics g){
         g.drawImage(action.getImage(), 0, 0, getWidth(), getHeight(), null);
     }
 
@@ -45,7 +47,8 @@ public class Player extends JPanel{
         if(action.isEndAction()){
             action = new Courir();
         }
-        this.setBounds(200 + action.getShiftX(), 400 + action.getShiftY(), 50 + action.getShiftWidth(), 150 + action.getShiftHeigt());
+        this.setBounds(200 + action.getShiftX(), 500 + action.getShiftY(), 50 + action.getShiftWidth(), 150 + action.getShiftHeigt());
+        repaint();
     }
 
     public void setAction(Action action) {
@@ -78,7 +81,7 @@ public class Player extends JPanel{
      * the action and the keypressed in json;
      * @return JSONObject which represent this instance of player
      */
-    public JSONObject toJson(){
+    /*public JSONObject toJson(){
         JSONObject playerJson = new JSONObject();
         playerJson.put("carac", carac.toJson());
         playerJson.put("action",action.toJson());
@@ -86,5 +89,5 @@ public class Player extends JPanel{
         
         return playerJson;
         
-    }
+    }*/
 }
