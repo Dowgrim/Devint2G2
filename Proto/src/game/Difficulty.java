@@ -1,5 +1,8 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.json.JSONObject;
 
 /**
@@ -9,10 +12,10 @@ public enum Difficulty {
     VeryEasy(true, 0, 1),
     Easy(false, 5, 1);
 
+    private static ArrayList<Difficulty> difficulties = new ArrayList<Difficulty>(Arrays.asList(Difficulty.VeryEasy,Difficulty.Easy));
+    
     private boolean pause;
-
     private int time;
-
     private double speed;
 
     Difficulty(boolean pause, int time, double speed){
@@ -31,6 +34,15 @@ public enum Difficulty {
 
     public double getSpeed() {
         return speed;
+    }
+    
+    public static Difficulty getDifficulty(boolean pause, int time, double speed){
+        for(Difficulty d : difficulties){
+            if(d.getSpeed() == speed && d.getTime()==time && d.isPause()==pause){
+                return d;
+            }
+        }
+        return null;
     }
     
     /**

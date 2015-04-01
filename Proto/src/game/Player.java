@@ -30,6 +30,12 @@ public class Player extends JPanel{
         action = new Courir();
     }
 
+    public Player(Action act, PlayerCarac playCarac, int keyPressed){
+        this.action = act;
+        this.carac = playCarac;
+        this.keyPressed = keyPressed;
+    }
+    
     public void paintComponent(Graphics2D g){
         g.drawImage(action.getImage(), 0, 0, getWidth(), getHeight(), null);
     }

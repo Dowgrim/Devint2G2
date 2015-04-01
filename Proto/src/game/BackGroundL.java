@@ -33,6 +33,18 @@ public class BackGroundL extends JPanel{
         }
     }
 
+    public BackGroundL(String path, int position){
+        this.path = path;
+        this.position = position;
+        this.setLayout(null);
+        File f = new File(path);
+        try {
+            background = ImageIO.read(f);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void paint(Graphics g){
         g.drawImage(background, 3500-position, 0, 3500, 750, null);
         g.drawImage(background, -position, 0, 3500, 750, null);

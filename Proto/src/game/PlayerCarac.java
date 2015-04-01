@@ -23,11 +23,24 @@ public class PlayerCarac {
      * @param life
      */
     public PlayerCarac(int life){
-        this.life=life;
-        this.MAXLIFE=life;
-        this.score = 0;
+        this(life,life,0);
     }
 
+    /**
+     * We can choose how many lives we have,
+     * the maximum lives, and the score
+     * 
+     * @param life
+     * @param MAXLIFE
+     * @param score
+     */
+    public PlayerCarac(int life, int MAXLIFE, int score){
+        this.life=life;
+        this.MAXLIFE=MAXLIFE;
+        if(this.life>this.MAXLIFE) this.life = this.MAXLIFE;
+        this.score = score;
+        if(this.score<0) this.score=0;
+    }
     
     //===============GETTERS & SETTERS==============================
     public int getLife() {

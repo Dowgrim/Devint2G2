@@ -28,7 +28,11 @@ public class Obstacle extends JPanel {
     private String pathImage;
 
     public Obstacle(String image, ObstacleCarac carac, int key, String sound){
-        state = "Normal";
+        this(image,carac,key,sound,"Normal");
+    }
+
+    public Obstacle(String image, ObstacleCarac carac, int key, String sound, String state){
+        this.state=state;
         this.pathImage = image;
         File f = new File(pathImage);
         try {
@@ -40,7 +44,7 @@ public class Obstacle extends JPanel {
         this.key = key;
         this.sound = sound;
     }
-
+    
     public void paintComponent(Graphics g){
         g.drawImage(images.get(state), 0, 0, getWidth(), getHeight(), null);
     }

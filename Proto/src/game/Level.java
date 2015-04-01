@@ -23,17 +23,20 @@ import java.util.Observer;
 public class Level extends JFrame{
 
     private Player player;
-
     private Difficulty difficulty;
-
     private ArrayList<Obstacle> obstacles;
-
     private ArrayList<Item> items;
-
     private BackGroundL backGround;
-
     private int position = 0;
 
+    public Level(Player player, Difficulty difficulty, ArrayList<Obstacle> obstacles, BackGroundL backGround, int position){
+        this.player = player;
+        this.difficulty = difficulty;
+        this.obstacles = obstacles;
+        this.backGround = backGround;
+        this.position=position;
+    }
+    
     public Level(ArrayList<Obstacle> obstacles, Difficulty dif){
         final Defilement t = new Defilement();
         difficulty = dif;

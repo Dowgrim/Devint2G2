@@ -38,6 +38,26 @@ public class Action {
         return shiftX;
     }
 
+    public void setImage(int image) {
+        this.image = image;
+    }
+
+    public void setShiftX(int shiftX) {
+        this.shiftX = shiftX;
+    }
+
+    public void setShiftY(int shiftY) {
+        this.shiftY = shiftY;
+    }
+
+    public void setShiftWidth(int shiftWidth) {
+        this.shiftWidth = shiftWidth;
+    }
+
+    public void setShiftHeigt(int shiftHeigt) {
+        this.shiftHeigt = shiftHeigt;
+    }
+
     public int getShiftY() {
         return shiftY;
     }
