@@ -32,14 +32,14 @@ public class Game {
         // lancer le niveau
         ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
         obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(1300, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(2400, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
+        obstacles.add(new Obstacle("./Proto/images/Obstacle/aigle.png", new ObstacleCarac(2400, 300, 100, 100), KeyEvent.VK_DOWN, "./Proto/sons/aigle.wav"));
         obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(3000, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
         obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(3600, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
         obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(5000, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
         obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(6200, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(7000, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
+        obstacles.add(new Obstacle("./Proto/images/Obstacle/aigle.png", new ObstacleCarac(7000, 300, 100, 100), KeyEvent.VK_DOWN, "./Proto/sons/aigle.wav"));
         obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(8000, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(8300, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
+        obstacles.add(new Obstacle("./Proto/images/Obstacle/aigle.png", new ObstacleCarac(8300, 300, 100, 100), KeyEvent.VK_DOWN, "./Proto/sons/aigle.wav"));
         obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(9000, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
         level = new Level(obstacles, difficulty);
     }

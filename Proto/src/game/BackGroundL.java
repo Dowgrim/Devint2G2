@@ -35,7 +35,7 @@ public class BackGroundL extends JPanel{
     }
 
     public void forward(int pos){
-        setBounds(-(pos%3500), 0, 3500, 750);
+        setBounds(-(pos%3500), 0, 5000, 750);
     }
     
     /**

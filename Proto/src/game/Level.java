@@ -96,7 +96,7 @@ public class Level extends JFrame{
                 for(Obstacle o : obstacles) {
                     if (o.getCaracX() < position + 2000 && o.getCaracX() > position - 1000) {
                         o.setBounds((o.getCaracX() - position), o.getCaracY(), o.getCaracWidth(), o.getCaracHeight());
-                        if(o.getCaracX() == position+1000){
+                        if(o.getCaracX() == position+500){
                             o.playSound();
                         }
                     }
@@ -134,6 +134,7 @@ public class Level extends JFrame{
                 }
                 backGround.forward(position);
             }
+            new Win();
         }
     }
     
