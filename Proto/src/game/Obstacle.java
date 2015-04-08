@@ -25,7 +25,8 @@ public class Obstacle extends JPanel {
     private String sound;
 
     private String state;
-
+    
+    private String pathImage;
     
     //private String pathImage;
 
@@ -35,8 +36,8 @@ public class Obstacle extends JPanel {
 
     public Obstacle(String image, ObstacleCarac carac, int key, String sound, String state){
         this.state=state;
+        this.pathImage = image;
         File f = new File(image);
-        state = "Normal";
         try {
             images.put(state, ImageIO.read(f));
         } catch (IOException e) {
@@ -93,16 +94,16 @@ public class Obstacle extends JPanel {
      * toJson method for an Obstacle
      * it contains the JSon of the associated ObstacleCarac
      * and the path of the image, the key we have to push,
-     * the path of the sound, and the state
-     * @return a JSONObject which represent the current instance of Obstl
+     * the path of the sound
+     * @return a JSONObject which represent the current instance of Obstacle
      */
-    /*public JSONObject toJson(){
+    public JSONObject toJson(){
         JSONObject obstacleJson = new JSONObject();
         obstacleJson.put("carac", this.carac.toJson());
         obstacleJson.put("image", pathImage);
         obstacleJson.put("key",key);
-        obstacleJson.put("state",state);
         obstacleJson.put("sound",sound);
         return obstacleJson;
-    }*/
+    }
+    
 }

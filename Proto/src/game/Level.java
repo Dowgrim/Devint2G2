@@ -157,11 +157,14 @@ public class Level extends JFrame{
     /**
      * ToJson method for a level
      * It will return a JSon containing
-     * all the obstacle and their coordinates, the difficulty,
+     * all the obstacle, the difficulty,
      * the background, the position in the level, and the player
+     
+     Level(Player player, Difficulty difficulty, ArrayList<Obstacle> obstacles, BackGroundL backGround, int position){
+        
      * @return a JSONOBject which represent this instance of level
      */
-    /*public JSONObject toJson(){
+    public JSONObject toJson(){
         JSONObject levelJson = new JSONObject();
         levelJson.put("difficulty", difficulty.toJson());
         levelJson.put("background",backGround.toJson());
@@ -173,5 +176,5 @@ public class Level extends JFrame{
         levelJson.put("obstacles",obstacle);
         levelJson.put("player",player.toJson());
         return levelJson;
-    }*/
+    }
 }

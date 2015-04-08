@@ -43,7 +43,6 @@ public abstract class ConfigObstactle {
         try{
             img = obstacle.getString("image");
             snd = obstacle.getString("sound");
-            state = obstacle.getString("state");
             key = obstacle.getInt("key");
         }catch(Exception e){
             throw new IllegalArgumentException("Error with the JSONObject obstacle in ConfigObstactle.configObstacle."
@@ -51,7 +50,7 @@ public abstract class ConfigObstactle {
                     + "and int for the last one");
         }
         
-        Obstacle obst = new Obstacle(img,caracObstacle,key,snd,state);
+        Obstacle obst = new Obstacle(img,caracObstacle,key,snd);
         return obst;
     }
 
@@ -92,33 +91,22 @@ public abstract class ConfigObstactle {
     }
     
     public static Player playerConfig(JSONObject player){
-        JSONObject caracPlayer = player.getJSONObject("carac");
-        PlayerCarac carac;
+        int life;
         try{
-            carac = new PlayerCarac(caracPlayer.getInt("life"),caracPlayer.getInt("MAXLIFE"),caracPlayer.getInt("score"));
+            life = player.getInt("life");
         }catch (Exception e){
             throw new IllegalArgumentException("Error parsing the carac JSONObject in player. Missing arguments in it.");
         }
         
-        Action act = ConfigObstactle.configAction(player.getJSONObject("action"));
-        
-        int keyPressed;
-        try{
-            keyPressed = player.getInt("keypressed");
-        }catch (Exception e){
-            throw new IllegalArgumentException("Error parsing the player JSONObject. Missing the int argument for 'keypressed'.");
-        }
-        
-        return new Player(act, carac,keyPressed);
+        return new Player(life);
     }
     
     public static BackGroundL backgroundConfig(JSONObject back){
         String path="";
-        int position=0;
         try{
             path=back.getString("path");
         }catch (Exception e){
-            
+            throw new IllegalArgumentException("Error parsing the background JSONObject in BackGroundL");
         }
         return new BackGroundL(path);
     }

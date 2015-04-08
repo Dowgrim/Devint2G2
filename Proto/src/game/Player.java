@@ -32,12 +32,6 @@ public class Player extends JPanel{
         setSize(50, 150);
     }
 
-    public Player(Action act, PlayerCarac playCarac, int keyPressed){
-        this.action = act;
-        this.carac = playCarac;
-        this.keyPressed = keyPressed;
-    }
-
     @Override
     public void paintComponent(Graphics g){
         g.drawImage(action.getImage(), 0, 0, getWidth(), getHeight(), null);
@@ -82,17 +76,14 @@ public class Player extends JPanel{
 
     /**
      * toJson method for a Player
-     * it contains the associated PlayerCarac in json,
-     * the action and the keypressed in json;
+     * it contains the life of the player
      * @return JSONObject which represent this instance of player
      */
-    /*public JSONObject toJson(){
+    public JSONObject toJson(){
         JSONObject playerJson = new JSONObject();
-        playerJson.put("carac", carac.toJson());
-        playerJson.put("action",action.toJson());
-        playerJson.put("keypressed",keyPressed);
+        playerJson.put("life", carac.getLife());
         
         return playerJson;
         
-    }*/
+    }
 }

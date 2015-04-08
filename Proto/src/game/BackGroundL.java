@@ -17,9 +17,10 @@ import java.util.Observer;
 public class BackGroundL extends JPanel{
 
     private Image background;
+    private String pathBackground;
 
     public BackGroundL(String backGround){
-
+        this.pathBackground = backGround;
         File f = new File(backGround);
         try {
             background = ImageIO.read(f);
@@ -46,13 +47,12 @@ public class BackGroundL extends JPanel{
     
     /**
      * toJson method for a BackGroundL object
-     * It contains the path for the image and the position
+     * It contains the path for the image
      * @return a JSONObject which represent the current instance of BackGroundL
      */
-    /*public JSONObject toJson(){
+    public JSONObject toJson(){
         JSONObject backgroundJson = new JSONObject();
-        backgroundJson.put("path",path);
-        backgroundJson.put("position",position);
+        backgroundJson.put("path",pathBackground);
         return backgroundJson;
-    }*/
+    }
 }
