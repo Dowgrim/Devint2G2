@@ -19,9 +19,9 @@ public class Game {
 
 
     public Game(){
-        Courir.initIMAGES("TODO");
-        Glisser.initIMAGES("TODO");
-        Sauter.initIMAGES("TODO");
+        Courir.initIMAGES("PetiteFille");
+        Glisser.initIMAGES("lol");
+        Sauter.initIMAGES("lol");
         launchLevel(1);
     }
 
@@ -31,16 +31,20 @@ public class Game {
         //Aller regardez dans DATA le chemin vers le fichier de donnée du Level l.
         // lancer le niveau
         ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(1300, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/aigle.png", new ObstacleCarac(2400, 300, 100, 100), KeyEvent.VK_DOWN, "./Proto/sons/aigle.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(3000, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(3600, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(5000, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(6200, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/aigle.png", new ObstacleCarac(7000, 300, 100, 100), KeyEvent.VK_DOWN, "./Proto/sons/aigle.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(8000, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/aigle.png", new ObstacleCarac(8300, 300, 100, 100), KeyEvent.VK_DOWN, "./Proto/sons/aigle.wav"));
-        obstacles.add(new Obstacle("./Proto/images/Obstacle/lion.jpeg", new ObstacleCarac(9000, 550, 200, 100), KeyEvent.VK_UP, "./Proto/sons/lion.wav"));
+        int tailleLion = 250;
+        int tailleAigle = 100;
+        int posLion = 470;
+        int posAigle = 300;
+        obstacles.add(new Obstacle("./images/Obstacle/lion.png", new ObstacleCarac(1300, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
+        obstacles.add(new Obstacle("./images/Obstacle/aigle.png", new ObstacleCarac(2400, posAigle, tailleAigle, tailleAigle), KeyEvent.VK_DOWN, "./sons/aigle.wav"));
+        obstacles.add(new Obstacle("./images/Obstacle/lion.png", new ObstacleCarac(3000, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
+        obstacles.add(new Obstacle("./images/Obstacle/lion.png", new ObstacleCarac(3600, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
+        obstacles.add(new Obstacle("./images/Obstacle/lion.png", new ObstacleCarac(5000, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
+        obstacles.add(new Obstacle("./images/Obstacle/lion.png", new ObstacleCarac(6200, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
+        obstacles.add(new Obstacle("./images/Obstacle/aigle.png", new ObstacleCarac(7000, posAigle, tailleAigle, tailleAigle), KeyEvent.VK_DOWN, "./sons/aigle.wav"));
+        obstacles.add(new Obstacle("./images/Obstacle/lion.png", new ObstacleCarac(8000, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
+        obstacles.add(new Obstacle("./images/Obstacle/aigle.png", new ObstacleCarac(8300, posAigle, tailleAigle, tailleAigle), KeyEvent.VK_DOWN, "./sons/aigle.wav"));
+        obstacles.add(new Obstacle("./images/Obstacle/lion.png", new ObstacleCarac(9000, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
         level = new Level(obstacles, difficulty);
     }
 

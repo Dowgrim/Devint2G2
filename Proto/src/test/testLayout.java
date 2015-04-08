@@ -19,7 +19,7 @@ public class testLayout extends JPanel{
     Image image;
 
     public testLayout() {
-        File f = new File("./Proto/images/BackGround/5.jpg");
+        File f = new File("./images/BackGround/5.jpg");
         try {
             image = ImageIO.read(f);
         } catch (IOException e) {
@@ -39,7 +39,7 @@ public class testLayout extends JPanel{
         JPanel contentPane = new JPanel();
         f.setContentPane(contentPane);
 
-        final Player tP = new Player();
+        final Player tP = new Player(0);
 
         contentPane.add(tP);
 

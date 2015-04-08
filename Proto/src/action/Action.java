@@ -33,6 +33,15 @@ public class Action {
         shiftY = 0;
     }
 
+    public Action(Action act){
+        this.image = act.image;
+        this.interval = act.interval;
+        this.shiftHeigt = act.shiftHeigt;
+        this.shiftWidth = act.shiftWidth;
+        this.shiftX = act.shiftX;
+        this.shiftY = act.shiftY;
+    }
+
     public int getShiftX() {
         return shiftX;
     }

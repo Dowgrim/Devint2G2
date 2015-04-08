@@ -86,7 +86,7 @@ public class Obstacle extends JPanel {
 
     public void playSound(){
         SIVOXDevint s = new SIVOXDevint();
-        s.playWav(sound);
+        s.playWav(sound, true);
     }
 
     /**

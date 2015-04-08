@@ -26,8 +26,9 @@ public class Player extends JPanel{
 
     private int keyPressed = -1;
 
-    public Player(){
+    public Player(int paramCarac){
         action = new Courir();
+        carac = new PlayerCarac(paramCarac);
         setSize(50, 150);
     }
 
@@ -47,7 +48,7 @@ public class Player extends JPanel{
         if(action.isEndAction()){
             action = new Courir();
         }
-        this.setBounds(200 + action.getShiftX(), 500 + action.getShiftY(), 50 + action.getShiftWidth(), 150 + action.getShiftHeigt());
+        this.setBounds(200 + action.getShiftX(), 310 + action.getShiftY(), 190 + action.getShiftWidth(), 430 + action.getShiftHeigt());
         repaint();
     }
 
@@ -74,7 +75,11 @@ public class Player extends JPanel{
     public void gg() {
         carac.setScore(carac.getScore() + 500);
     }
-    
+
+    public Action getAction() {
+        return action;
+    }
+
     /**
      * toJson method for a Player
      * it contains the associated PlayerCarac in json,

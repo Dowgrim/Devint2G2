@@ -31,7 +31,7 @@ public class Glisser extends Action {
     }
 
     public static void initIMAGES(String chemin){
-        File f = new File("./Proto/images/Perso/5pivo.png");
+        File f = new File("./images/Perso/5pivo.png");
         try {
             IMAGES.add(ImageIO.read(f));
         } catch (IOException e) {

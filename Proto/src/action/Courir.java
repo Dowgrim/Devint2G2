@@ -16,14 +16,16 @@ public class Courir extends Action {
 
     private int interval = 0;
 
+
+
     @Override
     public void forward(){
-        interval++;
-        if(interval == 30){
+       interval++;
+        if(interval == 20){
+            if(image == 7){
+                image = 0;
+            }
             image++;
-         if(image == 6){
-             image = 0;
-         }
             interval = 0;
         }
 
@@ -33,7 +35,7 @@ public class Courir extends Action {
         File f;
         if(chemin.equals("troll")){
             for(int i = 1; i <= 10; i++){
-                f = new File("./Proto/images/Perso/frame-"+i+".gif");
+                f = new File("./images/Perso/frame-"+i+".gif");
                 try {
                     IMAGES.add(ImageIO.read(f));
                 } catch (IOException e) {
@@ -42,14 +44,14 @@ public class Courir extends Action {
             }
         }
         else{
-            for(int i = 1; i <= 6; i++){
-                f = new File("./Proto/images/Perso/"+i+".gif");
-                try {
-                    IMAGES.add(ImageIO.read(f));
-                } catch (IOException e) {
-                    e.printStackTrace();
+                for (int i = 1; i <= 8; i++) {
+                    f = new File("./images/colo/course" + i + ".png");
+                    try {
+                        IMAGES.add(ImageIO.read(f));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
         }
     }
 

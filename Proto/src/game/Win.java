@@ -14,7 +14,7 @@ public class Win extends JPanel {
     Image image;
 
     public Win(){
-        File file = new File("./Proto/images/gagne.png");
+        File file = new File("./images/gagne.png");
         try {
             image = ImageIO.read(file);
         } catch (IOException e) {
@@ -22,7 +22,7 @@ public class Win extends JPanel {
         }
         JFrame f = new JFrame("Bien Joué");
         f.setContentPane(this);
-        this.setSize(400, 200);
+        f.setSize(400, 200);
         f.setLocation((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth()/2)-200, (int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth()/2)-100);
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.setVisible(true);

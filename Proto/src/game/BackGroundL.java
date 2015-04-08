@@ -28,14 +28,20 @@ public class BackGroundL extends JPanel{
         }
     }
 
+    public BackGroundL(JSONObject backGround){
+        File f = new File(backGround.getString("image"));
+    }
+
     @Override
     public void paintComponent(Graphics g){
+        g.setColor(Color.white);
+        g.fillRect(0,0,getWidth(), getHeight());
         g.drawImage(background, 0, 0, 3500, 750, null);
         g.drawImage(background, 3500, 0, 3500, 750, null);
     }
 
     public void forward(int pos){
-        setBounds(-(pos%3500), 0, 5000, 750);
+        setBounds(-(pos % 3500), 0, 5000, 750);
     }
     
     /**

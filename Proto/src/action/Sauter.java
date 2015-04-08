@@ -17,14 +17,14 @@ public class Sauter extends Action {
 
     @Override
     public void forward(){
-        interval++;
+/*        interval++;
         if(interval == 30){
             image++;
             if(image == 6){
                 image = 0;
             }
             interval = 0;
-        }
+        }*/
         if(shiftY > -200 && !descent){
             shiftY--;
         }
@@ -48,7 +48,7 @@ public class Sauter extends Action {
         File f;
         if(chemin.equals("troll")){
             for(int i = 1; i <= 10; i++){
-                f = new File("./Proto/images/Perso/frame-"+i+".gif");
+                f = new File("./images/Perso/frame-"+i+".gif");
                 try {
                     IMAGES.add(ImageIO.read(f));
                 } catch (IOException e) {
@@ -57,14 +57,12 @@ public class Sauter extends Action {
             }
         }
         else{
-            for(int i = 1; i <= 6; i++){
-                f = new File("./Proto/images/Perso/"+i+".gif");
+                f = new File("./images/colo/saut1.png");
                 try {
                     IMAGES.add(ImageIO.read(f));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
         }
     }
 }

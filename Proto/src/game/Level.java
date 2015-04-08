@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import t2s.SIVOXDevint;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -28,6 +29,9 @@ public class Level extends JFrame{
     private ArrayList<Item> items;
     private BackGroundL backGround;
     private int position = 0;
+    private String musique;
+    private JLabel score;
+    private SIVOXDevint s = new SIVOXDevint();
 
     public Level(Player player, Difficulty difficulty, ArrayList<Obstacle> obstacles, BackGroundL backGround, int position){
         this.player = player;
@@ -39,9 +43,10 @@ public class Level extends JFrame{
     
     public Level(ArrayList<Obstacle> obstacles, Difficulty dif){
         final Defilement t = new Defilement();
+        musique = "./sons/musique.wav";
         difficulty = dif;
         setSize(1200, 750);
-        //setResizable(false);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addKeyListener(new KeyAdapter() {
             @Override
@@ -60,19 +65,26 @@ public class Level extends JFrame{
                     case KeyEvent.VK_ENTER :{
                         if(!t.isAlive()) {
                             t.start();
+                            s.playWav(musique);
                         }
                         break;
                     }
                 }
             }
         });
+
+
         JPanel contentPane = new JPanel();
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        player = new Player();
+        player = new Player(0);
         contentPane.add(player);
         player.forward();
+
+        score = new JLabel(player.getScore()+"");
+        score.setBounds(getWidth()-100, 0, 100, 30);
+        contentPane.add(score);
 
         this.obstacles = obstacles;
         for(Obstacle o : obstacles){
@@ -80,9 +92,11 @@ public class Level extends JFrame{
             o.setBounds(-400, 0, o.getCaracWidth(), o.getCaracHeight());
         }
 
-        backGround = new BackGroundL("./Proto/images/BackGround/5.jpg");
+        backGround = new BackGroundL("./images/BackGround/Plaine.png");
         contentPane.add(backGround);
         backGround.setBounds(0, 0, getWidth(), getHeight());
+
+
 
         setVisible(true);
     }
@@ -91,6 +105,7 @@ public class Level extends JFrame{
         @Override
         public void run() {
             while (player.getScore() < 5000) {
+                score.setText(player.getScore()+"");
                 position++;
                 player.forward();
                 for(Obstacle o : obstacles) {
@@ -102,13 +117,14 @@ public class Level extends JFrame{
                     }
                     if (o.getCaracX() == (position+250) && o.getKey() != player.getKeyPressed()) {
                         if (difficulty.isPause()) {
+                            int i = 0;
                             while (o.getKey() != player.getKeyPressed()) {
-                                int i = 0;
-                                if(i==3){
+                                if(i==100){
                                     o.playSound();
+                                    i = 0;
                                 }
                                 try {
-                                    Thread.sleep(1000);
+                                    Thread.sleep(30);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
@@ -128,7 +144,7 @@ public class Level extends JFrame{
                     }
                 }
                 try {
-                    Thread.sleep(3);
+                   Thread.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
