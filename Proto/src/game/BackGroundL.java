@@ -17,10 +17,8 @@ import java.util.Observer;
 public class BackGroundL extends JPanel{
 
     private Image background;
-    private String pathBackground;
 
-    public BackGroundL(String backGround){
-        this.pathBackground = backGround;
+    public BackGroundL(String backGround) {
         File f = new File(backGround);
         try {
             background = ImageIO.read(f);
@@ -31,6 +29,15 @@ public class BackGroundL extends JPanel{
 
     public BackGroundL(JSONObject backGround){
         File f = new File(backGround.getString("image"));
+    }
+
+    public void setImage(String image){
+        File f = new File(image);
+        try {
+            background = ImageIO.read(f);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -50,9 +57,9 @@ public class BackGroundL extends JPanel{
      * It contains the path for the image
      * @return a JSONObject which represent the current instance of BackGroundL
      */
-    public JSONObject toJson(){
+    /*public JSONObject toJson(){
         JSONObject backgroundJson = new JSONObject();
         backgroundJson.put("path",pathBackground);
         return backgroundJson;
-    }
+    }*/
 }

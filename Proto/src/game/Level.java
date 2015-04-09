@@ -3,8 +3,6 @@ package game;
 import action.Glisser;
 import action.Sauter;
 
-import com.sun.xml.internal.stream.util.ThreadLocalBufferAllocator;
-
 import javax.swing.*;
 
 import org.json.JSONArray;
@@ -15,8 +13,6 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Created by Michael on 06/03/2015.
@@ -53,8 +49,10 @@ public class Level extends JFrame{
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_UP :{
-                        player.setAction(new Sauter());
-                        player.setKeyPressed(e.getKeyCode());
+                        if(!(player.getAction() instanceof Sauter)) {
+                            player.setAction(new Sauter());
+                            player.setKeyPressed(e.getKeyCode());
+                        }
                         break;
                     }
                     case KeyEvent.VK_DOWN :{
@@ -67,6 +65,18 @@ public class Level extends JFrame{
                             t.start();
                             s.playWav(musique);
                         }
+                        break;
+                    }
+                    case KeyEvent.VK_W : {
+                        backGround.setImage("./images/BackGround/Plaine.png");
+                        break;
+                    }
+                    case KeyEvent.VK_X : {
+                        backGround.setImage("./images/BackGround/Montagne.png");
+                        break;
+                    }
+                    case KeyEvent.VK_C : {
+                        backGround.setImage("./images/BackGround/Savane.png");
                         break;
                     }
                 }
@@ -83,6 +93,7 @@ public class Level extends JFrame{
         player.forward();
 
         score = new JLabel(player.getScore()+"");
+        score.setFont(new Font("Arial", Font.PLAIN, 40));
         score.setBounds(getWidth()-100, 0, 100, 30);
         contentPane.add(score);
 
@@ -115,7 +126,7 @@ public class Level extends JFrame{
                             o.playSound();
                         }
                     }
-                    if (o.getCaracX() == (position+250) && o.getKey() != player.getKeyPressed()) {
+                    if (o.getCaracX() == (position+300) && o.getKey() != player.getKeyPressed()) {
                         if (difficulty.isPause()) {
                             int i = 0;
                             while (o.getKey() != player.getKeyPressed()) {
@@ -164,7 +175,7 @@ public class Level extends JFrame{
         
      * @return a JSONOBject which represent this instance of level
      */
-    public JSONObject toJson(){
+    /*public JSONObject toJson(){
         JSONObject levelJson = new JSONObject();
         levelJson.put("difficulty", difficulty.toJson());
         levelJson.put("background",backGround.toJson());
@@ -176,5 +187,5 @@ public class Level extends JFrame{
         levelJson.put("obstacles",obstacle);
         levelJson.put("player",player.toJson());
         return levelJson;
-    }
+    }*/
 }

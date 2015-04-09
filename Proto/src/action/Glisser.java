@@ -15,23 +15,23 @@ public class Glisser extends Action {
 
     private int time = 0;
 
+
     public Glisser(){
-        shiftY = 100;
-        shiftHeigt = -100;
-        shiftWidth = +100;
+        shiftY = 280;
+        shiftHeigt = -350;
     }
 
     @Override
     public void forward(){
         time ++;
-        if(time == 500){
+        if(time == 300){
             endAction = true;
         }
 
     }
 
     public static void initIMAGES(String chemin){
-        File f = new File("./images/Perso/5pivo.png");
+        File f = new File("./images/colo/glisse1.png");
         try {
             IMAGES.add(ImageIO.read(f));
         } catch (IOException e) {

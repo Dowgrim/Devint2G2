@@ -97,13 +97,13 @@ public class Obstacle extends JPanel {
      * the path of the sound
      * @return a JSONObject which represent the current instance of Obstacle
      */
-    public JSONObject toJson(){
+    /*public JSONObject toJson(){
         JSONObject obstacleJson = new JSONObject();
         obstacleJson.put("carac", this.carac.toJson());
         obstacleJson.put("image", pathImage);
         obstacleJson.put("key",key);
         obstacleJson.put("sound",sound);
         return obstacleJson;
-    }
+    }*/
     
 }
