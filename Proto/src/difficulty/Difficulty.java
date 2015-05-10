@@ -7,11 +7,6 @@ import game.Level;
  */
 public class Difficulty {
 
-    Level level;
 
     public void go(){}
-
-    public Level getLevel() {
-        return level;
-    }
 }

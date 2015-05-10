@@ -15,32 +15,40 @@ public class Sauter extends Action {
 
     private boolean descent = false;
 
+    private int delay = 1;
+
     @Override
-    public void forward(){
-/*        interval++;
-        if(interval == 30){
-            image++;
-            if(image == 6){
-                image = 0;
-            }
-            interval = 0;
-        }*/
-        if(shiftY > -200 && !descent){
-            shiftY--;
-        }
-        else{
-            descent = true;
-            if(shiftY < 0){
-                shiftY++;
-            }
-            else{
-                endAction = true;
+    public void forward() {
+        delay++;
+        if (delay == 2) {
+            delay = 0;
+            if (!descent && shiftY > -200) {
+                if (shiftY > -50) {
+                    shiftY -= 3;
+                } else if (shiftY > -125) {
+                    shiftY -= 2;
+                } else {
+                    shiftY--;
+                }
+            } else {
+                descent = true;
+                if (shiftY < 0)
+                    if (shiftY > -50) {
+                        shiftY += 3;
+                    } else if (shiftY > -125) {
+                        shiftY += 2;
+                    } else {
+                        shiftY++;
+                    }
+                else {
+                    endAction = true;
+                }
             }
         }
     }
 
     @Override
-    public Image getImage() {
+    public Image getImage(){
         return IMAGES.get(image);
     }
 
@@ -64,5 +72,14 @@ public class Sauter extends Action {
                     e.printStackTrace();
                 }
         }
+    }
+
+    @Override
+    public boolean onBonus() {
+        if (descent && shiftY > -150 && shiftY < -20) {
+            descent = false;
+            return true;
+        }
+        return false;
     }
 }

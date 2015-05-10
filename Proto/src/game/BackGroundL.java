@@ -44,22 +44,11 @@ public class BackGroundL extends JPanel{
     public void paintComponent(Graphics g){
         g.setColor(Color.white);
         g.fillRect(0,0,getWidth(), getHeight());
-        g.drawImage(background, 0, 0, 3500, 750, null);
-        g.drawImage(background, 3500, 0, 3500, 750, null);
+        g.drawImage(background, 0, 0, 7000, 750, null);
+        g.drawImage(background, 7000, 0, 7000, 750, null);
     }
 
     public void forward(int pos){
-        setBounds(-(pos % 3500), 0, 5000, 750);
+        setBounds(-(pos % 7000), 0, 9000, 750);
     }
-    
-    /**
-     * toJson method for a BackGroundL object
-     * It contains the path for the image
-     * @return a JSONObject which represent the current instance of BackGroundL
-     */
-    /*public JSONObject toJson(){
-        JSONObject backgroundJson = new JSONObject();
-        backgroundJson.put("path",pathBackground);
-        return backgroundJson;
-    }*/
 }

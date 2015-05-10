@@ -35,7 +35,7 @@ public class Game {
         int tailleAigle = 100;
         int posLion = 470;
         int posAigle = 300;
-        obstacles.add(new Obstacle("./images/Obstacle/chien.gif", new ObstacleCarac(1300, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
+        obstacles.add(new Obstacle("./images/Obstacle/chien.gif", new ObstacleCarac(1300, 440, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
         obstacles.add(new Obstacle("./images/Obstacle/aigle.png", new ObstacleCarac(2400, posAigle, tailleAigle, tailleAigle), KeyEvent.VK_DOWN, "./sons/aigle.wav"));
         obstacles.add(new Obstacle("./images/Obstacle/lion.png", new ObstacleCarac(3000, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
         obstacles.add(new Obstacle("./images/Obstacle/lion.png", new ObstacleCarac(3600, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
@@ -45,6 +45,7 @@ public class Game {
         obstacles.add(new Obstacle("./images/Obstacle/lion.png", new ObstacleCarac(8000, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
         obstacles.add(new Obstacle("./images/Obstacle/aigle.png", new ObstacleCarac(8300, posAigle, tailleAigle, tailleAigle), KeyEvent.VK_DOWN, "./sons/aigle.wav"));
         obstacles.add(new Obstacle("./images/Obstacle/lion.png", new ObstacleCarac(9000, posLion, tailleLion, tailleLion), KeyEvent.VK_UP, "./sons/lion.wav"));
+        obstacles.add(new Obstacle("./images/Obstacle/the-end.jpg", new ObstacleCarac(9500, 250, 400, 400), KeyEvent.VK_UP, "lol"));
         level = new Level(obstacles, difficulty);
     }
 

@@ -25,10 +25,8 @@ public class Obstacle extends JPanel {
     private String sound;
 
     private String state;
-    
-    private String pathImage;
-    
-    //private String pathImage;
+
+    private boolean fin = false;
 
     public Obstacle(String image, ObstacleCarac carac, int key, String sound){
         this(image,carac,key,sound,"Normal");
@@ -36,7 +34,6 @@ public class Obstacle extends JPanel {
 
     public Obstacle(String image, ObstacleCarac carac, int key, String sound, String state){
         this.state=state;
-        this.pathImage = image;
         File f = new File(image);
         try {
             images.put(state, ImageIO.read(f));
@@ -90,20 +87,12 @@ public class Obstacle extends JPanel {
         s.playWav(sound, true);
     }
 
-    /**
-     * toJson method for an Obstacle
-     * it contains the JSon of the associated ObstacleCarac
-     * and the path of the image, the key we have to push,
-     * the path of the sound
-     * @return a JSONObject which represent the current instance of Obstacle
-     */
-    /*public JSONObject toJson(){
-        JSONObject obstacleJson = new JSONObject();
-        obstacleJson.put("carac", this.carac.toJson());
-        obstacleJson.put("image", pathImage);
-        obstacleJson.put("key",key);
-        obstacleJson.put("sound",sound);
-        return obstacleJson;
-    }*/
-    
+    public void setFin(){
+        fin = true;
+    }
+
+    public boolean isFin(){
+        return fin;
+    }
+
 }

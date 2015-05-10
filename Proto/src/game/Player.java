@@ -66,8 +66,8 @@ public class Player extends JPanel{
         carac.setLife(carac.getLife() - 1);
     }
 
-    public void gg() {
-        carac.setScore(carac.getScore() + 500);
+    public void gg(int score) {
+        carac.setScore(carac.getScore() + score);
     }
 
     public Action getAction() {

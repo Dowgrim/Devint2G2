@@ -101,4 +101,8 @@ public class Action {
         actionJson.put("shiftHeight",shiftHeigt);
         return actionJson;
     }
+
+    public boolean onBonus() {
+        return false;
+    }
 }
