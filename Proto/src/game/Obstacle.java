@@ -28,11 +28,14 @@ public class Obstacle extends JPanel {
 
     private boolean fin = false;
 
+    private String pathImage;
+    
     public Obstacle(String image, ObstacleCarac carac, int key, String sound){
         this(image,carac,key,sound,"Normal");
     }
 
     public Obstacle(String image, ObstacleCarac carac, int key, String sound, String state){
+        this.pathImage=image;
         this.state=state;
         File f = new File(image);
         try {
@@ -93,6 +96,24 @@ public class Obstacle extends JPanel {
 
     public boolean isFin(){
         return fin;
+    }
+    
+    public JSONObject toJson(){
+        JSONObject  obs = new JSONObject();
+        obs.put("carac", carac.toJson());
+        obs.put("image", pathImage);
+        obs.put("sound", sound);
+        obs.put("key", key);
+        return obs;
+    }
+    
+    @Override
+    public String toString(){
+        String txt = "carac : "+ carac.toJson();
+        txt+="\nimage : "+pathImage;
+        txt+="\nsound : "+sound;
+        txt+="\nkey : "+key;
+        return txt;
     }
 
 }

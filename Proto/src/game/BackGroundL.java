@@ -8,8 +8,6 @@ import org.json.JSONObject;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Created by Michael on 25/03/2015.
@@ -17,8 +15,10 @@ import java.util.Observer;
 public class BackGroundL extends JPanel{
 
     private Image background;
+    private String backgroundPath;
 
     public BackGroundL(String backGround) {
+        this.backgroundPath = backGround;
         File f = new File(backGround);
         try {
             background = ImageIO.read(f);
@@ -50,5 +50,11 @@ public class BackGroundL extends JPanel{
 
     public void forward(int pos){
         setBounds(-(pos % 7000), 0, 9000, 750);
+    }
+    
+    public JSONObject toJson(){
+        JSONObject back = new JSONObject();
+        back.put("image", backgroundPath);
+        return back;
     }
 }

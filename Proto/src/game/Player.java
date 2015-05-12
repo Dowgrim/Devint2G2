@@ -79,11 +79,11 @@ public class Player extends JPanel{
      * it contains the life of the player
      * @return JSONObject which represent this instance of player
      */
-    /*public JSONObject toJson(){
+    public JSONObject toJson(){
         JSONObject playerJson = new JSONObject();
         playerJson.put("life", carac.getLife());
         
         return playerJson;
         
-    }*/
+    }
 }

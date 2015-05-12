@@ -1,7 +1,5 @@
 package game;
 
-import org.json.JSONObject;
-
 /**
  * Created by Michael on 11/03/2015.
  */
@@ -35,9 +33,9 @@ public class PlayerCarac {
      * @param score
      */
     public PlayerCarac(int life, int MAXLIFE, int score){
-        this.life=life;
-        this.MAXLIFE=MAXLIFE;
-        if(this.life>this.MAXLIFE) this.life = this.MAXLIFE;
+        this.MAXLIFE=MAXLIFE<=0?1:MAXLIFE;
+        this.life=life>this.MAXLIFE?this.MAXLIFE:life;
+        if(this.life<=0) this.life = this.MAXLIFE;
         this.score = score;
         if(this.score<0) this.score=0;
     }
@@ -58,7 +56,7 @@ public class PlayerCarac {
     }
 
     public void setScore(int score) {
-        this.score = score;
+        this.score=(score<0)?0:score;
     }
 
     public int getMAXLIFE() {
@@ -73,19 +71,15 @@ public class PlayerCarac {
      * @return true if you haven't any lives left, false otherwise
      */
     public boolean isDead(){
-        if(this.life<=0) return false;
+        if(this.life>0) return false;
         return true;
     }
     
-    /**
-     * The toJson method of Player
-     * @return a JSONObject which describes this instance if Player
-     */
-    public JSONObject toJson(){
-        JSONObject player = new JSONObject();
-        player.put("life",life);
-        player.put("MAXLIFE", MAXLIFE);
-        player.put("score",score);
-        return player;
+    @Override
+    public boolean equals(Object obj){
+        if(obj != this){
+            
+        }
+        return true;
     }
 }

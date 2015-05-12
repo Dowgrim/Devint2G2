@@ -4,16 +4,19 @@ import action.Glisser;
 import action.Sauter;
 
 import javax.swing.*;
+
 import java.util.Timer;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import t2s.SIVOXDevint;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.TimerTask;
 
 /**
@@ -23,7 +26,7 @@ public class Level extends JFrame {
 
     private Player player;
     private Difficulty difficulty;
-    private ArrayList<Obstacle> obstacles;
+    private List<Obstacle> obstacles;
     private ArrayList<Item> items;
     private BackGroundL backGround;
     private int position = 0;
@@ -39,7 +42,7 @@ public class Level extends JFrame {
         this.position = position;
     }
 
-    public Level(ArrayList<Obstacle> obstacles, Difficulty dif) {
+    public Level(List<Obstacle> obstacles2, Difficulty dif) {
         final Defilement t = new Defilement();
         musique = "./sons/musique.wav";
         difficulty = dif;
@@ -99,8 +102,8 @@ public class Level extends JFrame {
         score.setBounds(getWidth() - 120, 0, 200, 30);
         contentPane.add(score);
 
-        this.obstacles = obstacles;
-        for (Obstacle o : obstacles) {
+        this.obstacles = obstacles2;
+        for (Obstacle o : obstacles2) {
             contentPane.add(o);
             o.setBounds(-400, 0, o.getCaracWidth(), o.getCaracHeight());
         }
