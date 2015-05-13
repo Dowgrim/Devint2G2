@@ -17,7 +17,7 @@ import org.json.JSONObject;
  * Created by Michael on 31/03/2015.
  */
 public class FileInteraction {
-    private static String pathFile = "./ressources/level.txt";
+    private static String pathFile = "../ressources/level.txt";
     
     public static void save(List<Obstacle> obs){
         JSONObject level = new JSONObject();

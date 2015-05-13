@@ -23,6 +23,11 @@ public class Game {
 
 
     public Game(){
+        this(Difficulty.VeryEasy);
+    }
+    
+    public Game(Difficulty d){
+        this.difficulty = d;
         Courir.initIMAGES("PetiteFille");
         Glisser.initIMAGES("lol");
         Sauter.initIMAGES("lol");
